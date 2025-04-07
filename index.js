@@ -6,7 +6,6 @@ const client = new Client({
   intents: [GatewayIntentBits.Guilds]
 });
 
-// Function to ping the Rust server
 async function updateServerStatus() {
   try {
     const state = await Gamedig.query({
@@ -22,9 +21,9 @@ async function updateServerStatus() {
       type: ActivityType.Playing
     });
 
-    console.log(`Updated status: ${players}/${maxPlayers} online`);
+    console.log(`Updated: ${players}/${maxPlayers} online`);
   } catch (error) {
-    console.error('Failed to query server:', error.message);
+    console.error('Query failed:', error.message);
 
     client.user.setActivity(`Server offline`, {
       type: ActivityType.Watching
@@ -32,11 +31,10 @@ async function updateServerStatus() {
   }
 }
 
-// Run status update every 30 seconds
 client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
   updateServerStatus();
-  setInterval(updateServerStatus, 30 * 1000);
+  setInterval(updateServerStatus, 30 * 1000); // every 30 seconds
 });
 
 client.login(process.env.DISCORD_TOKEN);
