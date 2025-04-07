@@ -8,7 +8,7 @@ const client = new Client({
 
 async function updateServerStatus() {
   try {
-    const state = await Gamedig.query({
+    const state = await Gamedig.GameDig.query({
       type: 'rust',
       host: process.env.RUST_SERVER_IP,
       port: parseInt(process.env.RUST_SERVER_PORT)
