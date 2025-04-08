@@ -17,8 +17,8 @@ async function updateServerStatus() {
     const players = state.players.length;
     const maxPlayers = state.maxplayers;
 
-    client.user.setActivity(`${players}/${maxPlayers} online`, {
-      type: ActivityType.Playing
+    client.user.setActivity(`${players}/${maxPlayers}`, {
+      type: ActivityType.Players
     });
 
     console.log(`Updated: ${players}/${maxPlayers} online`);
