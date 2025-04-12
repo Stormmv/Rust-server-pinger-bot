@@ -34,7 +34,7 @@ async function updateServerStatus() {
 client.once('ready', () => {
   console.log(`Logged in as ${client.user.tag}`);
   updateServerStatus();
-  setInterval(updateServerStatus, 10 * 1000); // every 30 seconds
+  setInterval(updateServerStatus, 10 * 1000); // every 10 seconds
 });
 
 client.login(process.env.DISCORD_TOKEN);
